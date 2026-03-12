@@ -23,7 +23,7 @@ align-items:center;
 
 padding:20px 10%;
 
-background:rgba(42, 38, 38, 0.7);
+background:rgba(0, 0, 0, 0.7);
 backdrop-filter:blur(10px);
 
 position:sticky;
@@ -532,16 +532,23 @@ margin-bottom:20px;
 /* Small devices (mobile) */
 @media (max-width: 768px) {
   /* Navbar */
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 15px 5%;
+  
+   .navbar {
+      flex-direction: row;       /* keep row layout */
+      align-items: flex-start;   /* align top */
+      padding: 15px 5%;
+      position: relative;        /* for absolute positioning of links */
   }
 
   .nav-links {
-    flex-direction: column;
-    gap: 15px;
-    margin-top: 10px;
+      flex-direction: column;    /* vertical stack */
+      position: absolute;        /* move to right */
+      top: 0;
+      right: 5%;                 /* adjust distance from edge */
+      gap: 15px;                 /* vertical spacing */
+      background: rgba(42,38,38,0.9); /* optional subtle background */
+      padding: 10px 15px;
+      border-radius: 8px;
   }
 
   /* Hero section */
@@ -576,7 +583,7 @@ margin-bottom:20px;
 
   /* Pricing cards */
   .pricing-container {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
   }
 
@@ -586,13 +593,17 @@ margin-bottom:20px;
   }
 
   /* Testimonials */
-  .testimonial-slider {
-    height: auto;
+
+  .testimonial-slider{
+    height:auto;       /* container grows with content */
+    overflow: visible; /* allow all testimonials to show */
   }
 
-  .testimonial {
-    width: 90%;
-    margin: auto;
+  .testimonial{
+    position: relative; /* remove absolute positioning */
+    opacity:1;          /* make visible */
+    margin-bottom: 20px;
+    animation: none;    /* disable sliding animation for mobile */
   }
 
   /* CTA */
