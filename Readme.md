@@ -10,6 +10,7 @@ Designed to showcase a product, highlight features, display testimonials, and pr
 [View Live Demo](https://vic996g.github.io/Product-Landing-Page/)
 
 
+
 ---
 ## 💻 Technologies Used
 

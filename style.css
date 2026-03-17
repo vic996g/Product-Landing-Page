@@ -8,52 +8,72 @@
 
 /* Body styling */
 
+html,
+body {
+    overflow-x: hidden;
+}
+
 body{
     font-family:'Poppins', sans-serif;
     line-height:1.6;
 }
 
+/* Ensure images never exceed their container width */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
 /* ================= NAVBAR ================= */
 
-.navbar{
-
-display:flex;
-justify-content:space-between;
-align-items:center;
-
-padding:20px 10%;
-
-background:rgba(0, 0, 0, 0.7);
-backdrop-filter:blur(10px);
-
-position:sticky;
-top:0;
-
-z-index:1000;
-
+/* Navbar layout */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 10px 20px;
+  position: relative;
 }
 
-
-.nav-links{
-
-    list-style:none;
-
-    display:flex;
-    gap:20px;
-
+.navbar .logo {
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
 }
 
-.nav-links a{
-
-    text-decoration:none;
-    color:#ffffff;
-
+/* Nav links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
 }
 
-.logo {
-    color: white;
-    font-size: x-large;
+.nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 12px;
+  transition: background 0.3s;
 }
+
+.nav-links li a:hover {
+  background-color: #555;
+  border-radius: 4px;
+}
+
+/* Hamburger */
+.menu-toggle {
+  display: none; /* hide checkbox */
+}
+
+.hamburger {
+  display: none;
+  font-size: 28px;
+  color: #fff;
+  cursor: pointer;
+}
+
 
 /* ================= HERO ================= */
 .hero{
@@ -309,7 +329,7 @@ background:#f5f5f5;
 position:relative;
 max-width:600px;
 margin:auto;
-height:120px;
+height:160px;
 overflow:hidden;
 }
 
@@ -488,6 +508,7 @@ margin-bottom:20px;
   .feature-img {
     width: 60px;
     height: 60px;
+    
   }
 
   /* Product gallery */
@@ -532,24 +553,34 @@ margin-bottom:20px;
 /* Small devices (mobile) */
 @media (max-width: 768px) {
   /* Navbar */
-  
-   .navbar {
-      flex-direction: row;       /* keep row layout */
-      align-items: flex-start;   /* align top */
-      padding: 15px 5%;
-      position: relative;        /* for absolute positioning of links */
+
+.hamburger {
+    display: block;
   }
 
   .nav-links {
-      flex-direction: column;    /* vertical stack */
-      position: absolute;        /* move to right */
-      top: 0;
-      right: 5%;                 /* adjust distance from edge */
-      gap: 15px;                 /* vertical spacing */
-      background: rgba(42,38,38,0.9); /* optional subtle background */
-      padding: 10px 15px;
-      border-radius: 8px;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #333;
+    width: 200px;
+    display: none; /* hide by default */
+    border-radius: 5px;
+    overflow: hidden;
   }
+
+  /* Show menu when checkbox is checked */
+  .menu-toggle:checked + .hamburger + .nav-links {
+    display: flex;
+  }
+
+  .nav-links li {
+    text-align: center;
+    padding: 10px 0;
+  }
+}
+
 
   /* Hero section */
   .hero h1 {
@@ -569,6 +600,29 @@ margin-bottom:20px;
 
   .feature-box {
     width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .feature-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    background: #ffffff;
+  }
+
+  .feature-img {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 20px auto;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  .feature-box:hover .feature-img {
+    transform: scale(1.2);
   }
 
   /* Product gallery */
@@ -583,7 +637,7 @@ margin-bottom:20px;
 
   /* Pricing cards */
   .pricing-container {
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
   }
 
@@ -594,23 +648,20 @@ margin-bottom:20px;
 
   /* Testimonials */
 
-  .testimonial-slider{
-    height:auto;       /* container grows with content */
-    overflow: visible; /* allow all testimonials to show */
+  .testimonial-slider {
+    height: 160px;      /* same height or slightly more */
   }
 
-  .testimonial{
-    position: relative; /* remove absolute positioning */
-    opacity:1;          /* make visible */
-    margin-bottom: 20px;
-    animation: none;    /* disable sliding animation for mobile */
+  .testimonial {
+    position: absolute; /* keep absolute for animation */
+    width: 100%;
   }
 
   /* CTA */
   .cta h2 {
     font-size: 24px;
   }
-}
+
 
 /* Extra small devices (very small phones) */
 @media (max-width: 480px) {
